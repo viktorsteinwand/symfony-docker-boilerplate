@@ -10,7 +10,27 @@ Clone this project:
 
 ```sh
 git clone git@github.com:viktorsteinwand/symfony-docker-boilerplate.git
-cd symfony-docker-boilerplate
+cd symfony-docker-boilerplate/application
+composer update
+cd ..
+```
+
+### Update parameters.yml file
+
+Open or create new `application/app/config/parameters.yml` file with text editor and update it with following information:
+
+```yml
+parameters:
+    database_host: databasehost
+    database_port: null
+    database_name: symfony
+    database_user: sfuser
+    database_password: pass
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: 80a52bfc1983639343ede68ef100b725a99be609
 ```
 
 ### Add `symfony-boilerplate.local` to the hosts file
@@ -52,3 +72,9 @@ Tools listed below should be installed to start this application:
 ### Enable NFS on OS X Docker Machine with docker-machine-nfs
 
 Using NFS instead of VirtualBoxShares can be setup by using the [docker-machine-nfs](https://github.com/adlogix/docker-machine-nfs) available on [github](https://github.com/adlogix/docker-machine-nfs).
+
+## Open topics
+
+### Enable Opcache
+
+The Opcache must be installed and configured in the [viktorsteinwand/php-fpm](https://github.com/viktorsteinwand/php-fpm) docker images.
