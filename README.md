@@ -15,7 +15,7 @@ cd symfony-docker-boilerplate
 
 ### Add `symfony-boilerplate.local` to the hosts file
 
-Update the local host file (`/etc/hosts` on Linux/OS X, `C:\Windows\System32\drivers\etc\hosts` on Windows) by adding the following line:
+Update the local host file (`/etc/hosts` on Linux/OS X) by adding the following line:
 
 ```
 192.168.99.100 symfony-boilerplate.local
@@ -46,7 +46,6 @@ Tools listed below should be installed to start this application:
 ### Links
 
 - [Docker Toolbox on OS X](http://docs.docker.com/engine/installation/mac/)
-- [Docker Toolbox on Windows](https://docs.docker.com/engine/installation/windows/)
 
 ## Optional
 
