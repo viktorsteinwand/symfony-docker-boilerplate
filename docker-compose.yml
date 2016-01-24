@@ -1,0 +1,48 @@
+web:
+  image: nginx:1.9
+  ports:
+    - "80:80"
+    - "443:443"
+  links:
+    - "php"
+  hostname: symfony-boilerplate.local
+  domainname: symfony-boilerplate.local
+  volumes:
+    - ./docker/nginx/sites-enabled/default.conf:/etc/nginx/sites-enabled/default.conf
+    - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+    - ./docker/nginx/includes:/etc/nginx/includes
+    - ./docker/nginx/auth:/etc/nginx/auth
+    - ./docker/nginx/ssl:/etc/nginx/ssl
+    - ./.data/logs/nginx:/var/log/nginx
+  volumes_from:
+    - php
+php:
+  image: viktorsteinwand/php-fpm:5.6
+  links:
+    - "mysql:databasehost"
+  volumes:
+    - ./docker/php/dev/conf.d:/usr/local/etc/php/conf.d
+    - ./.data/logs/php-fpm:/var/log/php-fpm
+  volumes_from:
+    - application
+application:
+  image: busybox:latest
+  volumes:
+    - ./docker/application/startup.sh:/startup.sh
+    - ./application:/var/www/html
+    - /var/www
+  command: /bin/sh /startup.sh
+mysql:
+  image: mysql:5.7
+  ports:
+    - "3306:3306"
+  volumes:
+    - ./.data/mysql:/var/lib/mysql
+    - ./docker/mysql/dev/custom-entrypoint.sh:/custom-entrypoint.sh
+  entrypoint:
+    - /custom-entrypoint.sh
+  environment:
+    - MYSQL_ROOT_PASSWORD=rootpass
+    - MYSQL_DATABASE=sfapp
+    - MYSQL_USER=sfuser
+    - MYSQL_PASSWORD=pass

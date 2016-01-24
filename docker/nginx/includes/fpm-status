@@ -1,0 +1,14 @@
+location = /fpm_status {
+    include         /etc/nginx/fastcgi_params;
+    fastcgi_param   SCRIPT_FILENAME /fpm_status;
+    fastcgi_pass    php:9000;
+
+    allow 127.0.0.1;
+    deny all;
+}
+
+location /ping {
+    include         /etc/nginx/fastcgi_params;
+    fastcgi_param   SCRIPT_FILENAME /fpm_status;
+    fastcgi_pass    php:9000;
+}
