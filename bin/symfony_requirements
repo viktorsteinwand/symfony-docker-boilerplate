@@ -2,4 +2,4 @@
 export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
 
 cd application
-docker-compose run --rm php bin/console $@
+docker-compose run --rm php bin/symfony_requirements $@
