@@ -16,6 +16,7 @@ web:
     - ./.data/logs/nginx:/var/log/nginx
   volumes_from:
     - php
+
 php:
   image: viktorsteinwand/php-fpm:5.6
   links:
@@ -27,13 +28,14 @@ php:
     - ./.data/logs/php-fpm:/var/log/php-fpm
   volumes_from:
     - application
+
 application:
   image: busybox:latest
   volumes:
     - ./docker/application/startup.sh:/startup.sh
     - ./application:/var/www/html
-    - /var/www
   command: /bin/sh /startup.sh
+
 mysql:
   image: mysql:5.7
   ports:
