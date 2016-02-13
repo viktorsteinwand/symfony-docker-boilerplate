@@ -43,6 +43,16 @@ Update the local host file (`/etc/hosts` on Linux/OS X) by adding the following 
 
 *Note: Assumed that the IP 192.168.99.100 is the docker host IP*
 
+### Enable NFS on OS X Docker Machine with docker-machine-nfs (OS X only)
+
+Using NFS instead of VirtualBoxShares can be setup by using the [docker-machine-nfs](https://github.com/adlogix/docker-machine-nfs) available on [github](https://github.com/adlogix/docker-machine-nfs).
+
+Enable NFS on OS X docker-machine:
+
+```sh
+docker-machine-nfs <vm-name>
+```
+
 ### Start the application
 
 ```sh
@@ -58,6 +68,7 @@ Tools listed below should be installed to start this application:
 - composer  
 - docker  
 - docker-machine (OS X only)  
+- docker-machine-nfs (OS X only)  
 - docker-compose  
 - php  
 
@@ -66,12 +77,7 @@ Tools listed below should be installed to start this application:
 ### Links
 
 - [Docker Toolbox on OS X](http://docs.docker.com/engine/installation/mac/)
-
-## Optional
-
-### Enable NFS on OS X Docker Machine with docker-machine-nfs
-
-Using NFS instead of VirtualBoxShares can be setup by using the [docker-machine-nfs](https://github.com/adlogix/docker-machine-nfs) available on [github](https://github.com/adlogix/docker-machine-nfs).
+- [docker-machine-nfs](https://github.com/adlogix/docker-machine-nfs)
 
 ## Open topics
 
