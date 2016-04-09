@@ -1,6 +1,15 @@
 # symfony-docker-boilerplate
 
-The boilerplate for creating new Symfony based projects (development and testing purposes only)
+The boilerplate for creating new Symfony3 based projects (development and testing purposes only).
+
+Including:
+- nginx
+- PHP7
+- Xdebug
+- PHPUnit
+- intl
+- OPcache
+- MySql
 
 ## Installation
 
@@ -78,9 +87,3 @@ Tools listed below should be installed to start this application:
 
 - [Docker Toolbox on OS X](http://docs.docker.com/engine/installation/mac/)
 - [docker-machine-nfs](https://github.com/adlogix/docker-machine-nfs)
-
-## Open topics
-
-### Enable Opcache
-
-The Opcache must be installed and configured in the [viktorsteinwand/php-fpm](https://github.com/viktorsteinwand/php-fpm) docker images.
