@@ -76,10 +76,16 @@ The application is now available at [http://symfony-boilerplate.local](http://sy
 
 ### Managing the application
 
-#### Start the application
+#### Start the application with recreation of containers
 
 ```sh
 docker-compose -p sf3 up -d
+```
+
+#### Start the application with already existing containers
+
+```sh
+docker-compose -p sf3 start
 ```
 
 #### Stopping the application
@@ -102,13 +108,9 @@ docker-compose -p sf3 down
 
 #### Remove database, logs and caches volumes
 
-#### Stopping the application
-
 ```sh
 docker volume rm $(docker volume ls | grep sf3)
 ```
-
-The application is now available at [http://symfony-boilerplate.local](http://symfony-boilerplate.local).  
 
 ## Requirements
 
