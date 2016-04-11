@@ -18,13 +18,12 @@ web:
     - php
 
 php:
-  image: viktorsteinwand/php-fpm:5.6
+  image: viktorsteinwand/php:7.0-fpm-symfony-dev
   links:
     - "mysql:databasehost"
   environment:
     - SYMFONY_DEVELOPMENT=true
   volumes:
-    - ./docker/php/dev/conf.d:/usr/local/etc/php/conf.d
     - ./.data/logs/php-fpm:/var/log/php-fpm
   volumes_from:
     - application
