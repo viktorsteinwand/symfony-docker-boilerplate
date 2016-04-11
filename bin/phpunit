@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# wraps the php command to enable execution from host system on docker instance
+# This command do also wrap the phpunit binaries
+
+export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+
+docker run -i --rm -v "/private/":"/private/" -v "${PWD}":"${PWD}" -w ${PWD} --net=host --sig-proxy=true --pid=host viktorsteinwand/php:7.0-fpm-symfony-dev phpunit "$@"

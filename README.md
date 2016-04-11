@@ -2,25 +2,23 @@
 
 The boilerplate for creating new Symfony3 based projects (development and testing purposes only).
 
-Including:
-- nginx
-- PHP7
-- Xdebug
-- PHPUnit
-- intl
-- OPcache
-- MySql
+## Used docker images
+
+- [nginx:1.9](https://hub.docker.com/_/nginx/)  
+- [mysql:5.7](https://hub.docker.com/_/mysql/)  
+- [viktorsteinwand/php:7.0-fpm-symfony-dev](https://hub.docker.com/r/viktorsteinwand/php/)  
+- [alpine:latest](https://hub.docker.com/_/alpine/)  
 
 ## Installation
 
 ### Initialize project
 
-Clone this project:  
+Clone this project and run composer update:  
 
 ```sh
 git clone git@github.com:viktorsteinwand/symfony-docker-boilerplate.git
 cd symfony-docker-boilerplate/application
-composer update
+composer update --ignore-platform-reqs
 cd ..
 ```
 
@@ -65,7 +63,49 @@ docker-machine-nfs <vm-name>
 ### Start the application
 
 ```sh
-docker-compose up -d
+docker-compose -p sf3 up -d
+```
+
+Create the defined database:  
+
+```sh
+bin/console doctrine:schema:create
+```
+
+The application is now available at [http://symfony-boilerplate.local](http://symfony-boilerplate.local).  
+
+### Managing the application
+
+#### Start the application
+
+```sh
+docker-compose -p sf3 up -d
+```
+
+#### Stopping the application
+
+```sh
+docker-compose -p sf3 stop
+```
+
+#### Removing the application
+
+```sh
+docker-compose -p sf3 rm -vf
+```
+
+#### Stop and remove all container of the application
+
+```sh
+docker-compose -p sf3 down
+```
+
+#### Remove database, logs and caches volumes
+
+#### Stopping the application
+
+```sh
+docker volume rm $(docker volume ls | grep sf3)
 ```
 
 The application is now available at [http://symfony-boilerplate.local](http://symfony-boilerplate.local).  
@@ -75,11 +115,13 @@ The application is now available at [http://symfony-boilerplate.local](http://sy
 Tools listed below should be installed to start this application:  
 
 - composer  
-- docker  
+- docker >=1.10.0  
 - docker-machine (OS X only)  
 - docker-machine-nfs (OS X only)  
-- docker-compose  
-- php  
+- docker-compose >=1.6.0  
+- php >=7.0  
+
+See also [docker-compose requirements](https://docs.docker.com/compose/compose-file/#version-2).
 
 **Note: This project supports Linux or Docker-Machine on OS X only.**
 
